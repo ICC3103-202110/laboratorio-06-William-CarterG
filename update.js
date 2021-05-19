@@ -1,24 +1,24 @@
 
 function C_to_F(value){
-    return value*1.8 + 32
+    return  parseInt(value)*1.8 + 32
 }
 function C_to_K(value){
-    return value + 273.15
+    return parseInt(value) + 273.15
 }
 function F_to_C(value){
-    return (value - 32)*5/9
+    return (parseInt(value) - 32)*5/9
 }
 function F_to_K(value){
     return C_to_K(F_to_C(value))
 }
 function K_to_C(value){
-    return value - 273.15
+    return  parseInt(value) - 273.15
 }
 function K_to_F(value){
     return C_to_F(K_to_C(value))
 }
 function update(input, value, FUnit, SUnit){
-    const transformed_value = 0
+    var transformed_value = 0
     if (FUnit === SUnit){
         return {
             LeftValue: value,
@@ -88,9 +88,9 @@ function update(input, value, FUnit, SUnit){
         }
         return {
             LeftValue: transformed_value,
-            LeftUnit: FUnit,
+            LeftUnit: SUnit,
             RightValue: value,
-            RightUnit: SUnit,
+            RightUnit: FUnit,
             input: "Y",
         }
     }

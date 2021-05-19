@@ -59,35 +59,29 @@ function Value(model){
 }
 
 function firstUnit(model){
-    const input = model.LeftUnit
+    const {input} = model
     const message = 'From?'
-    const choices = ['Celsius','Fahrenheit', 'Kelvin']
-    return inquirer.prompt([
-        {
-            name: 'input',
-            type: 'input',
-            message: message,
-            default: input,
-            choices: choices
-            
-        }
-    ])
+    const choices = ['Celsius', 'Fahrenheit', 'Kelvin']
+    return inquirer.prompt({
+        name: 'input',
+        type: 'list',
+        message: message,
+        default: input,
+        choices: choices
+    })
 }
 
 function secondUnit(model){
-    const input = model.RightUnit
+    const {input} = model
     const message = 'To?'
-    const choices = ['Celsius','Fahrenheit', 'Kelvin']
-    return inquirer.prompt([
-        {
-            name: 'input',
-            type: 'input',
-            message: message,
-            default: input,
-            choices: choices
-            
-        }
-    ])
+    const choices = ['Celsius', 'Fahrenheit', 'Kelvin']
+    return inquirer.prompt({
+        name: 'input',
+        type: 'list',
+        message: message,
+        default: input,
+        choices: choices
+    })
 }
 
 
@@ -107,3 +101,23 @@ module.exports = {
     secondUnit,
 }
 
+const initModel = {
+    LeftValue: 0,
+    LeftUnit: "Cels",
+    RightValue: 32,
+    RightUnit: "Fahrenheit",
+    input: "Y",
+}
+
+function firstUnit(model){
+    const {input} = model
+    const message = 'From?'
+    const choices = ['Celsius', 'Fahrenheit', 'Kelvin']
+    return inquirer.prompt({
+        name: 'input',
+        type: 'list',
+        message: message,
+        default: input,
+        choices: choices
+    })
+}
