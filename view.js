@@ -54,6 +54,13 @@ function Value(model){
             type: 'input',
             message: message,
             default: input,
+            validate: function(value){
+                if(parseInt(value) || value === '0'){
+                    return true
+                } else {
+                    return 'The temperature value must be an integer'
+                }
+            }
         }
     ])
 }
@@ -99,25 +106,4 @@ module.exports = {
     Value,
     firstUnit,
     secondUnit,
-}
-
-const initModel = {
-    LeftValue: 0,
-    LeftUnit: "Cels",
-    RightValue: 32,
-    RightUnit: "Fahrenheit",
-    input: "Y",
-}
-
-function firstUnit(model){
-    const {input} = model
-    const message = 'From?'
-    const choices = ['Celsius', 'Fahrenheit', 'Kelvin']
-    return inquirer.prompt({
-        name: 'input',
-        type: 'list',
-        message: message,
-        default: input,
-        choices: choices
-    })
 }
